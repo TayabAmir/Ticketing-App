@@ -5,14 +5,14 @@ import { create } from "./index.test";
 
 it("returns a 404 if the Ticket with id isn't found", async () => {
     const id = new mongoose.Types.ObjectId().toHexString();
-    const response = await request(app).get(`/api/tickets/${id}`).set('Cookie', global.signup()).send({
+    const response = await request(app).put(`/api/tickets/${id}`).set('Cookie', global.signup()).send({
         title: "Hello",
         price: 12
     }).expect(404)
 })
 it("returns a 401 if the user not authenticated", async () => {
     const id = new mongoose.Types.ObjectId().toHexString();
-    const response = await request(app).get(`/api/tickets/${id}`).send({
+    const response = await request(app).put(`/api/tickets/${id}`).send({
         title: "Hello",
         price: 12
     }).expect(401)

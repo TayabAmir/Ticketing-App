@@ -5,7 +5,7 @@ import { OrderCancelledPublisher } from "../events/publishers/OrderCancelledPubl
 import { natsWrapper } from "../nats-wrapper"
 const router = express.Router()
 
-router.get('/api/orders/:id', requireAuth, async (req: Request, res: Response) => {
+router.delete('/api/orders/:id', requireAuth, async (req: Request, res: Response) => {
     const order = await Order.findById(req.params.id).populate('ticket');
     if (!order) throw new NotFoundError();
     if (order.userId !== req.currentUser!.id) throw new NotAuthorizedError()
@@ -23,4 +23,4 @@ router.get('/api/orders/:id', requireAuth, async (req: Request, res: Response) =
     res.status(204).send(order)
 })
 
-export { router as indexRouter }
+export { router as deleteRouter }

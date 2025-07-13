@@ -10,4 +10,4 @@ router.get('/api/orders/:id', requireAuth, async (req: Request, res: Response) =
     res.send(order)
 })
 
-export { router as indexRouter }
+export { router as showRouter }
