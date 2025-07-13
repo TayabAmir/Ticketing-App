@@ -16,7 +16,7 @@ router.put('/api/tickets/:id', requireAuth, [
     if (!ticket) {
         throw new NotFoundError();
     }
-    if(ticket.orderId){
+    if (ticket.orderId) {
         throw new BadRequestError("Ticket you are trying to update is reserved");
     }
     const userId = req.currentUser!.id

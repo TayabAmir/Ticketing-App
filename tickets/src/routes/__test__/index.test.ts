@@ -9,11 +9,10 @@ export const create = () => {
 }
 
 it("returns all the tickets ", async () => {
-    create()
-    create()
-    create()
-    create()
+    await create()
+    await create()
+    await create()
+    await create()
     const res = await request(app).get('/api/tickets').send().expect(200)
-    expect(res.body.length).toEqual(3)
-
+    expect(res.body.length).toEqual(4)
 })

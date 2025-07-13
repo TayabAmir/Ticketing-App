@@ -9,7 +9,7 @@ it("There exist a route handler for /api/tickets of post request", async () => {
     expect(response.status).not.toEqual(404);
 })
 it("Only authenticated user can access this", async () => {
-    await request(app).post('/api/tickets').set('Cookie', global.signup()).send({}).expect(200)
+    await request(app).post('/api/tickets').set('Cookie', global.signup()).send({}).expect(400)
 })
 it("An error for invalid title", async () => {
     await request(app).post('/api/tickets').set('Cookie', global.signup()).send({
